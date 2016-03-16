@@ -1,9 +1,40 @@
 package br.edu.fa7.controle_passagem.model;
 
-public class Pessoa {
+import java.io.Serializable;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "pessoa")
+@SequenceGenerator(name="SEQUENCE", sequenceName="pessoa_id_seq")
+@Inheritance(strategy=InheritanceType.JOINED)
+public class Pessoa implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8217555120242432600L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+    @Column(name = "pes_id")
 	private Integer id;
+	
+	@Column(name = "pes_nome")
+    @Basic(optional = false)
 	private String nome;
+	
+	@Column(name = "pes_cpf")
+    @Basic(optional = false)
 	private String cpf;
 
 	public Integer getId() {

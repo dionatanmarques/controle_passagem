@@ -1,39 +1,32 @@
 package br.edu.fa7.controle_passagem.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="assento_aviao")
-@SequenceGenerator(name="SEQUENCE", sequenceName="assento_id_seq")
-public class Assento implements Serializable {
+@Table(name="companhia_aerea")
+@SequenceGenerator(name="SEQUENCE", sequenceName="companhia_id_seq")
+public class CompanhiaAerea implements Serializable {
 
-	
-	private static final long serialVersionUID = 7731788204840145591L;
+	private static final long serialVersionUID = 4854022562608526175L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQUENCE")
-	@Column(name="asa_id")
+	@Column(name="coa_id")
 	private Integer id;
 	
-	@Column(name = "asa_nome")
+	@Column(name = "coa_nome")
     @Basic(optional = false)
 	private String nome;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="avi_id",nullable = false)    
-	private Aviao aviao;
 
 	public Integer getId() {
 		return id;
@@ -49,13 +42,5 @@ public class Assento implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Aviao getAviao() {
-		return aviao;
-	}
-
-	public void setAviao(Aviao aviao) {
-		this.aviao = aviao;
 	}
 }
