@@ -1,6 +1,7 @@
 package br.edu.fa7.controle_passagem.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +66,8 @@ public class Voo implements Serializable {
 	)
 	private List<Lanche> lanches;
 
+	private BigDecimal preco;
+
 	public Integer getId() {
 		return id;
 	}
@@ -127,5 +130,13 @@ public class Voo implements Serializable {
 
 	public void setLanches(List<Lanche> lanches) {
 		this.lanches = lanches;
+	}
+
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
 	}
 }

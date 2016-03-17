@@ -32,7 +32,6 @@ public class Passagem implements Serializable {
 	@JoinColumn(name = "id_voo", nullable = false)
 	private Voo voo;
 
-	private Assento assento;
 	private BigDecimal preco;
 
 	public Integer getId() {
@@ -57,14 +56,6 @@ public class Passagem implements Serializable {
 
 	public void setVoo(Voo voo) {
 		this.voo = voo;
-	}
-
-	public Assento getAssento() {
-		return assento;
-	}
-
-	public void setAssento(Assento assento) {
-		this.assento = assento;
 	}
 
 	public BigDecimal getPreco() {
