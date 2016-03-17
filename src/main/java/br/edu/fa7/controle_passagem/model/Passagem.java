@@ -3,7 +3,6 @@ package br.edu.fa7.controle_passagem.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,25 +14,24 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="passagem")
-@SequenceGenerator(name="SEQUENCE", sequenceName="passagem_id_seq")
+@Table(name = "passagem")
+@SequenceGenerator(name = "SEQUENCE", sequenceName = "passagem_id_seq")
 public class Passagem implements Serializable {
 
 	private static final long serialVersionUID = -6322443151637891133L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="SEQUENCE")
-	@Column(name="pas_id")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
 	private Integer id;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="pes_id",nullable = false)
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_pessoa", nullable = false)
 	private Pessoa pessoa;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="voo_id",nullable = false)
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_voo", nullable = false)
 	private Voo voo;
-	
+
 	private Assento assento;
 	private BigDecimal preco;
 
