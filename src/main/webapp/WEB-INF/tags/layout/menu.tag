@@ -22,7 +22,7 @@
 					</a>
 				</li>
 				<li class="active">
-					<a href="#">
+					<a href="${pageContext.request.contextPath}/area">
 						<i class="fa fa-lock"></i> Área Restrita
 					</a>
 				</li>
