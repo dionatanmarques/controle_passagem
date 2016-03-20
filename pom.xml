@@ -17,7 +17,11 @@
 			<artifactId>vraptor</artifactId>
 			<version>4.2.0-RC3</version>
 		</dependency>
-
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-hibernate</artifactId>
+			<version>4.0.3</version>
+		</dependency>
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -29,6 +33,33 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.5.Final</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.9.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-cdi</artifactId>
+			<version>5.1.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.1.3.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>4.3.9.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.3.9.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>postgresql</groupId>

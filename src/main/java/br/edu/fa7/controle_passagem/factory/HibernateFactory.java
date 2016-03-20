@@ -1,11 +1,14 @@
 package br.edu.fa7.controle_passagem.factory;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-
+@ApplicationScoped
 public class HibernateFactory {
 	
 	private static SessionFactory sf;

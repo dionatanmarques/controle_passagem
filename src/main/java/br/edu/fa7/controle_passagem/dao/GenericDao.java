@@ -11,9 +11,9 @@ public abstract class GenericDao<T> {
 	protected final Class classe;
 	protected final Session session;
 	
-    public GenericDao(Class classe) {
+    public GenericDao(Class classe, Session session) {
     	this.classe = classe;
-    	this.session = HibernateFactory.getHibernateSession();
+    	this.session = session;
     }
     
     public void salvar(T bm){

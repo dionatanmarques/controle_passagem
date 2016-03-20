@@ -1,5 +1,7 @@
 package br.edu.fa7.controle_passagem.controller;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
@@ -12,13 +14,22 @@ import br.edu.fa7.controle_passagem.model.Funcionario;
 
 @Controller
 @Path("/area")
-public class AreaController {
+public class AreaController implements Serializable{
 
-	@Inject
-	private Result result;
+	private static final long serialVersionUID = -8235909394199292237L;
+	
+	private final Result result;
+	private  final FuncionarioDao dao;
 	
 	@Inject
-	private FuncionarioDao dao;
+	public AreaController(Result result, FuncionarioDao dao) {
+		this.result = result;
+		this.dao = dao;
+	}
+	
+	public AreaController() {
+		this(null, null);
+	}
 	
 	@Get("")
 	public void login() {

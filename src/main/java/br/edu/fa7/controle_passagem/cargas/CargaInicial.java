@@ -23,7 +23,7 @@ public class CargaInicial {
 		Session session = HibernateFactory.getHibernateSession();
 		session.beginTransaction();
 
-		CompanhiaAereaDao caDao = new CompanhiaAereaDao();
+		CompanhiaAereaDao caDao = new CompanhiaAereaDao(session);
 
 		// ------------ Cria o Companhia Aerea ---------
 		CompanhiaAerea ca1 = new CompanhiaAerea();
@@ -41,8 +41,8 @@ public class CargaInicial {
 
 		caDao.salvar(ca3);
 
-		AviaoDao aviDao = new AviaoDao();
-		AssentoDao assDao = new AssentoDao();
+		AviaoDao aviDao = new AviaoDao(session);
+		AssentoDao assDao = new AssentoDao(session);
 		// ------------ Cria o Aviao ---------
 		List<CompanhiaAerea> listaC = new ArrayList<CompanhiaAerea>();
 		listaC.add(ca1);
@@ -77,7 +77,7 @@ public class CargaInicial {
 			}
 		}
 
-		LocalDao locDao = new LocalDao();
+		LocalDao locDao = new LocalDao(session);
 		String[] locais = { "FORTALEZA", "RECIFE", "NATAL", "ARACAJÚ",
 				"SALVADOR", "RIO DE JANEIRO", "SÃO PAULO", "CAMPINAS",
 				"FOZ DO IGUAÇU", "GRAMADOS", "FLORIANOPÓLIS" };
@@ -87,7 +87,7 @@ public class CargaInicial {
 			locDao.salvar(local);
 		}
 
-		FuncionarioDao funDao = new FuncionarioDao();
+		FuncionarioDao funDao = new FuncionarioDao(session);
 
 		Funcionario f1 = new Funcionario();
 		f1.setCpf("12312312312");
