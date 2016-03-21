@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.I18nMessage;
+import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.edu.fa7.controle_passagem.annotations.Restrito;
 import br.edu.fa7.controle_passagem.dao.FuncionarioDao;
@@ -48,7 +49,7 @@ public class AreaController implements Serializable{
 	public void logar(Funcionario funcionario){
 		Funcionario usuario = dao.buscarComoUsuario(funcionario.getCpf(), funcionario.getSenha());
 		if(usuario == null){
-			validador.add(new I18nMessage("alert-danger", "usuario.invalido"));
+			validador.add(new SimpleMessage("Autenticação", "Usuário ou senha inválido"));
 			validador.onErrorRedirectTo(this).login();
 		}
 		usuarioLogado.setUsuario(usuario);

@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="ol-md-12">
 			<c:forEach items="${errors}" var="erro">
-				<div class="alert ${erro.category} alert-dismissible" role="alert">
+				<div class="alert alert-danger alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -13,15 +13,15 @@
 					<p>${erro.message}</p>
 				</div>
 			</c:forEach>
-			<c:forEach items="${errors}" var="erro">
-				<div class="alert ${erro.category} alert-dismissible" role="alert">
+			<c:if test="${msg != null}">
+				<div class="alert ${msg.category} alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<p>${erro.message}</p>
+					<p>${msg.message}</p>
 				</div>
-			</c:forEach>
+			</c:if>
 		</div>
 	</div>
 </div>
