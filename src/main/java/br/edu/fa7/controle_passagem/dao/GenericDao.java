@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import br.edu.fa7.controle_passagem.factory.HibernateFactory;
-
 public abstract class GenericDao<T> {	
 	
 	protected final Class classe;
@@ -24,12 +22,12 @@ public abstract class GenericDao<T> {
     	session.delete(bm);
     }
     
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-	public List<T> listarTodos(Class bm){
+    @SuppressWarnings({ "unchecked" })
+	public List<T> listarTodos(){
     	return session.createCriteria(this.classe).list();
     }
     
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({ "unchecked" })
 	public List<T> listarTodosComLimite(Integer limite){
     	return session.createCriteria(this.classe).setMaxResults(limite).list();
     }

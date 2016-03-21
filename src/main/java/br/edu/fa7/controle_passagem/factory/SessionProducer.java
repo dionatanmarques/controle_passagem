@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Any;
-import javax.enterprise.inject.Default;
 import javax.enterprise.inject.Produces;
 
 import org.hibernate.Session;

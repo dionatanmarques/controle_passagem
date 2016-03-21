@@ -4,7 +4,6 @@ package br.edu.fa7.controle_passagem.dao;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 
 import org.hibernate.Session;
