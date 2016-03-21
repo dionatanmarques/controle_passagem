@@ -35,7 +35,10 @@
 
 		<!-- Menu Principal -->
 		<layout:menu />
-
+		
+		<!-- Mensagens -->
+		<layout:msg />
+		
 		<div class="container">
 			<jsp:doBody />
 		</div>
