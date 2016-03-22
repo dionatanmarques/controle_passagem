@@ -4,7 +4,7 @@
 <layout:page titulo="Companhias Aéreas">
 	<div class="row">
 		<div class="panel panel-default">
-			<div class="panel-heading">Comapanhia Aérea
+			<div class="panel-heading">Companhia Aérea
 				<a class="btn btn-success btn-sm pull-right"
 						href="${pageContext.request.contextPath}/companhia/">
 						<span class="fa fa-search"></span> Consultar
