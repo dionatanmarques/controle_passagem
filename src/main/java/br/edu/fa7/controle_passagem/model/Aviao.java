@@ -28,7 +28,7 @@ public class Aviao implements Serializable {
 	@Basic(optional = false)
 	private String nome;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_companhia_aerea", nullable = false)
 	private CompanhiaAerea companhia;
 

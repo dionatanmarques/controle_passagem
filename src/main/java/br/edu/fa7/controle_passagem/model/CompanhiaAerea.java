@@ -28,6 +28,8 @@ public class CompanhiaAerea implements Serializable {
 	@NotEmpty(message="nome não pode esta vazio")
 	@Basic(optional = false)
 	private String nome;
+	
+	
 
 	public Integer getId() {
 		return id;
