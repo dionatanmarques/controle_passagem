@@ -3,6 +3,7 @@ package br.edu.fa7.controle_passagem.model;
 import java.io.Serializable;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Aviao implements Serializable {
 	@Basic(optional = false)
 	private String nome;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.REMOVE)
 	@JoinColumn(name = "id_companhia_aerea", nullable = false)
 	private CompanhiaAerea companhia;
 

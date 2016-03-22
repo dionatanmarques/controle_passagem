@@ -28,7 +28,7 @@ public class CompanhiaController {
 	@Inject
 	private Validator validator;
 
-	@Get("/")
+	@Get({"","/"})
 	public void index(){
 	}
 	
@@ -43,6 +43,14 @@ public class CompanhiaController {
 	public void edita(int cod){
 		result.include("companhia", dao.carregar(cod));
 		result.redirectTo(this).cadastro();
+	}
+	
+	@Get
+	public void remove(int cod){
+		CompanhiaAerea companhia = dao.carregar(cod);
+		dao.deletar(companhia);
+		result.include("msg", new SimpleMessage("alert-success", "Operação realizada com sucesso"));
+		result.redirectTo(this).index();
 	}
 	
 	@Get

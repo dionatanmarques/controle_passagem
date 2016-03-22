@@ -5,21 +5,24 @@
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				Comapanhia Aérea
+				Frota Aérea
 					<a class="btn btn-success btn-sm pull-right"
-						href="${pageContext.request.contextPath}/companhia/cadastro">
+						href="${pageContext.request.contextPath}/aviao/cadastro">
 						<span class="fa fa-plus"></span> Novo
 					</a>
 			</div>
 			<div class="panel-body">
 				<div class="panel panel-default">
 				<div class="panel-body">
-					<form action="${pageContext.request.contextPath}/companhia/buscar"
+					<form action="${pageContext.request.contextPath}/aviao/buscar"
 					method="post">
 					<div class="form-group col-md-6">
-						<label for="nome">Nome</label> <input id="nome"
-							class="form-control" name="nome" type="text"
-							placeholder="Nome da Companhia Aérea" autofocus />
+						<label for="nome">Companhia Aérea</label> 
+						<select class="form-control" name="companhiaId">
+							<c:forEach items="${listaDeCompanhia}" var="comp">
+								<option value="${comp.id}">${comp.nome}</option>
+							</c:forEach>
+						</select>
 					</div>
 					<button class="btn btn-primary pull-right" type="submit">Buscar</button>
 				</form>
@@ -33,15 +36,15 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${listaCompanhias}" var="companhia">
+						<c:forEach items="${listaAvioes}" var="aviao">
 							<tr>
-								<td>${companhia.nome}</td>
+								<td>${aviao.nome}</td>
 								<td><a class="btn btn-primary btn-sm" title="Editar"
-									href="${pageContext.request.contextPath}/companhia/edita?cod=${companhia.id}">
+									href="${pageContext.request.contextPath}/aviao/edita?cod=${aviao.id}">
 										<span class="fa fa-pencil"></span>
 								</a>
 								<a class="btn btn-primary btn-sm" title="Excluir"
-									href="${pageContext.request.contextPath}/companhia/remove?cod=${companhia.id}">
+									href="${pageContext.request.contextPath}/aviao/edita?cod=${aviao.id}">
 										<span class="fa fa-remove"></span>
 								</a>
 								</td>

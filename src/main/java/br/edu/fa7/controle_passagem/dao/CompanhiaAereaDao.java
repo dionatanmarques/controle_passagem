@@ -11,7 +11,6 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 import br.edu.fa7.controle_passagem.model.CompanhiaAerea;
-
 @RequestScoped
 public class CompanhiaAereaDao extends GenericDao<CompanhiaAerea> implements Serializable {
 
