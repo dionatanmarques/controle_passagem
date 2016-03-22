@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -33,6 +34,13 @@ public class AviaoDao extends GenericDao<Aviao> implements Serializable{
 
 	public Aviao carregar(int cod) {
 		return (Aviao) session.createCriteria(classe)
+				.add(Restrictions.eq("id", cod))
+				.uniqueResult();
+	}
+	
+	public Aviao carregarEdiacao(int cod){
+		return (Aviao) session.createCriteria(classe)
+				.setFetchMode("companhia", FetchMode.JOIN)
 				.add(Restrictions.eq("id", cod))
 				.uniqueResult();
 	}
