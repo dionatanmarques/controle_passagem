@@ -1,5 +1,7 @@
 package br.edu.fa7.controle_passagem.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
@@ -10,8 +12,10 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.caelum.vraptor.view.Results;
 import br.edu.fa7.controle_passagem.annotations.Restrito;
 import br.edu.fa7.controle_passagem.dao.LocalDao;
+import br.edu.fa7.controle_passagem.model.CompanhiaAerea;
 import br.edu.fa7.controle_passagem.model.Local;
 
 @Controller
@@ -61,11 +65,19 @@ public class LocalController {
 	@Post
 	public void cadastrar(@Valid Local local){
 		
-		validator.onErrorRedirectTo(this).cadastro();;
+		validator.onErrorRedirectTo(this).cadastro();
 		
 		dao.salvar(local);
 		result.include("msg", new SimpleMessage("alert-success", "Operação realizada com sucesso"));
 		result.redirectTo(this).cadastro();
+	}
+	
+	@Post
+	public void buscaExclusivaJson(int origemId){
+		Local localOrigem = dao.carregar(origemId);
+		List<Local> locais = dao.listarTodos();
+		locais.remove(localOrigem);
+		result.use(Results.json()).from(locais).serialize();
 	}
 
 }

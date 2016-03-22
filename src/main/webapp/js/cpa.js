@@ -31,6 +31,8 @@ function initMask() {
 	// Somente números
 	$(".numero").mask("0#");
 	$('.money').mask("#.##0,00", {reverse: true});
+	// DateTime
+	$(".date-time input").mask("00/00/0000 00:00:00");
 };
 
 $(document).ajaxStart(function() {

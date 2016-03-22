@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
+import br.com.caelum.vraptor.view.Results;
 import br.edu.fa7.controle_passagem.annotations.Restrito;
 import br.edu.fa7.controle_passagem.dao.AssentoDao;
 import br.edu.fa7.controle_passagem.dao.AviaoDao;
@@ -18,10 +19,6 @@ import br.edu.fa7.controle_passagem.model.Aviao;
 import br.edu.fa7.controle_passagem.model.CompanhiaAerea;
 import br.edu.fa7.controle_passagem.util.GeradorDeAssento;
 
-//Resolver como ficara a edição
-//Não Esquecer isso 
-//
-//
 @Controller
 @Path("/aviao")
 @Restrito
@@ -93,5 +90,11 @@ public class AviaoController {
 		result.include("msg", new SimpleMessage("alert-success",
 				"Operação realizada com sucesso"));
 		result.redirectTo(this).cadastro();
+	}
+	
+	@Post
+	public void buscaJson(int companhiaId){
+		CompanhiaAerea companhia = companhiaDao.carregar(companhiaId);
+		result.use(Results.json()).from(dao.buscaPorCompanhia(companhia)).serialize();
 	}
 }

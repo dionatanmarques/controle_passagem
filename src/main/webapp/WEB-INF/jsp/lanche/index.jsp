@@ -1,7 +1,7 @@
 <%@ taglib tagdir="/WEB-INF/tags/layout" prefix="layout"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<layout:page titulo="Companhias Aéreas">
+<layout:page titulo="Lanches">
 	<div class="row">
 		<div class="panel panel-default">
 			<div class="panel-heading">

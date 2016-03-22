@@ -63,6 +63,9 @@
 
 		<!-- CPA -->
 		<script src="${pageContext.request.contextPath}/js/cpa.js" type="text/javascript"></script>
+		
+		<!-- VOO -->
+		<script src="${pageContext.request.contextPath}/js/voo.js" type="text/javascript"></script>
 
 		<jsp:invoke fragment="javascript" />
 	</body>
