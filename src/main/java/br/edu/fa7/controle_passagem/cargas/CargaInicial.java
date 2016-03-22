@@ -12,12 +12,14 @@ import br.edu.fa7.controle_passagem.dao.CompanhiaAereaDao;
 import br.edu.fa7.controle_passagem.dao.FuncionarioDao;
 import br.edu.fa7.controle_passagem.dao.LancheDao;
 import br.edu.fa7.controle_passagem.dao.LocalDao;
+import br.edu.fa7.controle_passagem.dao.PilotoDao;
 import br.edu.fa7.controle_passagem.factory.HibernateFactory;
 import br.edu.fa7.controle_passagem.model.Aviao;
 import br.edu.fa7.controle_passagem.model.CompanhiaAerea;
 import br.edu.fa7.controle_passagem.model.Funcionario;
 import br.edu.fa7.controle_passagem.model.Lanche;
 import br.edu.fa7.controle_passagem.model.Local;
+import br.edu.fa7.controle_passagem.model.Piloto;
 import br.edu.fa7.controle_passagem.util.GeradorDeAssento;
 
 public class CargaInicial {
@@ -82,6 +84,19 @@ public class CargaInicial {
 			lanche.setPreco(new BigDecimal(5.50));
 			lancheDao.salvar(lanche);
 		}
+		
+		PilotoDao pilotoDao = new PilotoDao(session);
+		Piloto piloto = new Piloto();
+		piloto.setCht("123456");
+		piloto.setCpf("14725836912");
+		piloto.setNome("José");
+		pilotoDao.salvar(piloto);
+		
+		Piloto piloto1 = new Piloto();
+		piloto1.setCht("654321");
+		piloto1.setCpf("36925814778");
+		piloto1.setNome("João");
+		pilotoDao.salvar(piloto1);
 		
 		
 
