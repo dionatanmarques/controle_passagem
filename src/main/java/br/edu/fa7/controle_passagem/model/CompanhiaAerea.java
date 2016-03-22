@@ -2,37 +2,29 @@ package br.edu.fa7.controle_passagem.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "companhia_aerea")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "companhia_id_seq")
+@Table(name="companhia_aerea")
+@SequenceGenerator(name="companhia_aerea_id_generator", sequenceName="companhia_aerea_id_seq")
 public class CompanhiaAerea implements Serializable {
 
-	private static final long serialVersionUID = 4854022562608526175L;
+	private static final long serialVersionUID = -8349999902516526488L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="companhia_aerea_id_generator")
 	private Integer id;
 
-	@NotNull(message="nome não pode ser nulo")
-	@NotEmpty(message="nome não pode esta vazio")
-	@Basic(optional = false)
 	private String nome;
-	
-	
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -40,7 +32,7 @@ public class CompanhiaAerea implements Serializable {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {

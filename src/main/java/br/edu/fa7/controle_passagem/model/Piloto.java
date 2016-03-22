@@ -12,18 +12,18 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "piloto")
-@PrimaryKeyJoinColumn(name="id_pessoa")
+@PrimaryKeyJoinColumn(name = "id_pessoa")
 public class Piloto extends Pessoa implements Serializable {
 
-	private static final long serialVersionUID = 3742179521600451256L;
+	private static final long serialVersionUID = -8225549709161298425L;
 
 	@Basic(optional = false)
-	@NotNull(message="CHT não pode ser nulo")
-	@NotEmpty(message="CHT não pode esta vazio")
+	@NotNull(message = "CHT não pode ser nulo")
+	@NotEmpty(message = "CHT não pode esta vazio")
 	private String cht;
 
 	public String getCht() {
-		return cht;
+		return this.cht;
 	}
 
 	public void setCht(String cht) {

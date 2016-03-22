@@ -10,10 +10,9 @@ import br.edu.fa7.controle_passagem.dao.AssentoDao;
 import br.edu.fa7.controle_passagem.dao.AviaoDao;
 import br.edu.fa7.controle_passagem.dao.CompanhiaAereaDao;
 import br.edu.fa7.controle_passagem.dao.FuncionarioDao;
-import br.edu.fa7.controle_passagem.dao.LocalDao;
 import br.edu.fa7.controle_passagem.dao.LancheDao;
+import br.edu.fa7.controle_passagem.dao.LocalDao;
 import br.edu.fa7.controle_passagem.factory.HibernateFactory;
-import br.edu.fa7.controle_passagem.model.Assento;
 import br.edu.fa7.controle_passagem.model.Aviao;
 import br.edu.fa7.controle_passagem.model.CompanhiaAerea;
 import br.edu.fa7.controle_passagem.model.Funcionario;
@@ -47,7 +46,6 @@ public class CargaInicial {
 		caDao.salvar(ca3);
 
 		AviaoDao aviDao = new AviaoDao(session);
-		AssentoDao assDao = new AssentoDao(session);
 		// ------------ Cria o Aviao ---------
 		List<CompanhiaAerea> listaC = new ArrayList<CompanhiaAerea>();
 		listaC.add(ca1);

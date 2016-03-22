@@ -2,10 +2,8 @@ package br.edu.fa7.controle_passagem.factory;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Produces;
-import javax.inject.Qualifier;
 
 import org.hibernate.Session;
 

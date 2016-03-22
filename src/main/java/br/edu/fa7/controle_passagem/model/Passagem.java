@@ -1,28 +1,34 @@
 package br.edu.fa7.controle_passagem.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "passagem")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "passagem_id_seq")
+@SequenceGenerator(name = "passagem_id_generator", sequenceName = "passagem_id_seq")
 public class Passagem implements Serializable {
 
-	private static final long serialVersionUID = -6322443151637891133L;
+	private static final long serialVersionUID = -4648957372549599418L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "passagem_id_generator")
 	private Integer id;
+
+	@Column(name = "porcentagem_desconto")
+	private Integer porcentagemDesconto;
+
+	@ManyToMany
+	@JoinTable(
+		name = "checkin",
+		joinColumns = {
+			@JoinColumn(name = "id_passagem")
+		},
+		inverseJoinColumns = {
+			@JoinColumn(name = "id_assento")
+		}
+	)
+	private List<Assento> assentos;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_pessoa", nullable = false)
@@ -32,18 +38,32 @@ public class Passagem implements Serializable {
 	@JoinColumn(name = "id_voo", nullable = false)
 	private Voo voo;
 
-	private BigDecimal preco;
-
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	public Integer getPorcentagemDesconto() {
+		return this.porcentagemDesconto;
+	}
+
+	public void setPorcentagemDesconto(Integer porcentagemDesconto) {
+		this.porcentagemDesconto = porcentagemDesconto;
+	}
+
+	public List<Assento> getAssentos() {
+		return this.assentos;
+	}
+
+	public void setAssentos(List<Assento> assentos) {
+		this.assentos = assentos;
+	}
+
 	public Pessoa getPessoa() {
-		return pessoa;
+		return this.pessoa;
 	}
 
 	public void setPessoa(Pessoa pessoa) {
@@ -51,18 +71,10 @@ public class Passagem implements Serializable {
 	}
 
 	public Voo getVoo() {
-		return voo;
+		return this.voo;
 	}
 
 	public void setVoo(Voo voo) {
 		this.voo = voo;
-	}
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
 	}
 }

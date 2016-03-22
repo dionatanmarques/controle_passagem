@@ -3,7 +3,6 @@ package br.edu.fa7.controle_passagem.model;
 import java.io.Serializable;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,19 +17,19 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "assento_aviao")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "assento_id_seq")
+@Table(name = "assento")
+@SequenceGenerator(name = "assento_id_generator", sequenceName = "assento_id_seq")
 public class Assento implements Serializable {
 
-	private static final long serialVersionUID = 7731788204840145591L;
+	private static final long serialVersionUID = 2444688172105901750L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "assento_id_generator")
 	private Integer id;
 
 	@Basic(optional = false)
-	@NotNull(message="nome não pode ser nulo")
-	@NotEmpty(message="nome não pode esta vazio")
+	@NotNull(message = "nome não pode ser nulo")
+	@NotEmpty(message = "nome não pode esta vazio")
 	private String nome;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -38,7 +37,7 @@ public class Assento implements Serializable {
 	private Aviao aviao;
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -46,7 +45,7 @@ public class Assento implements Serializable {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -54,7 +53,7 @@ public class Assento implements Serializable {
 	}
 
 	public Aviao getAviao() {
-		return aviao;
+		return this.aviao;
 	}
 
 	public void setAviao(Aviao aviao) {

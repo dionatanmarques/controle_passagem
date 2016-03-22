@@ -23,36 +23,39 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "voo")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "voo_id_seq")
+@SequenceGenerator(name = "voo_id_generator", sequenceName = "voo_id_seq")
 public class Voo implements Serializable {
 
-	private static final long serialVersionUID = -2093323231173103850L;
+	private static final long serialVersionUID = -6621689650827007726L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "voo_id_generator")
 	private Integer id;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Basic(optional = false)
+	@Column(name = "data_desembarque")
+	private Date dataDesembarque;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Basic(optional = false)
+	@Column(name = "data_embarque")
+	private Date dataEmbarque;
+
+	@Basic(optional = false)
+	private BigDecimal preco;
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_local_origem", nullable = false)
-	private Local localOrigem;
+	@JoinColumn(name = "id_aviao", nullable = false)
+	private Aviao aviao;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_local_destino", nullable = false)
 	private Local localDestino;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_aviao", nullable = false)
-	private Aviao aviao;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Basic(optional = false)
-	@Column(name = "data_embarque_voo")
-	private Date dataEmbarque;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Basic(optional = false)
-	@Column(name = "data_desembarque_voo")
-	private Date dataDesembarque;
+	@JoinColumn(name = "id_local_origem", nullable = false)
+	private Local localOrigem;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_piloto", nullable = false)
@@ -61,63 +64,73 @@ public class Voo implements Serializable {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(
 		name = "voo_lanche",
-		joinColumns = @JoinColumn(name = "id_voo"),
-		inverseJoinColumns = @JoinColumn(name = "id_lanche")
+		joinColumns = {
+			@JoinColumn(name = "id_voo")
+		},
+		inverseJoinColumns = {
+			@JoinColumn(name = "id_lanche")
+		}
 	)
 	private List<Lanche> lanches;
 
-	private BigDecimal preco;
-
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Local getLocalOrigem() {
-		return localOrigem;
-	}
-
-	public void setLocalOrigem(Local localOrigem) {
-		this.localOrigem = localOrigem;
-	}
-
-	public Local getLocalDestino() {
-		return localDestino;
-	}
-
-	public void setLocalDestino(Local localDestino) {
-		this.localDestino = localDestino;
-	}
-
-	public Aviao getAviao() {
-		return aviao;
-	}
-
-	public void setAviao(Aviao aviao) {
-		this.aviao = aviao;
-	}
-
-	public Date getDataEmbarque() {
-		return dataEmbarque;
-	}
-
-	public void setDataEmbarque(Date dataEmbarque) {
-		this.dataEmbarque = dataEmbarque;
-	}
-
 	public Date getDataDesembarque() {
-		return dataDesembarque;
+		return this.dataDesembarque;
 	}
 
 	public void setDataDesembarque(Date dataDesembarque) {
 		this.dataDesembarque = dataDesembarque;
 	}
 
+	public Date getDataEmbarque() {
+		return this.dataEmbarque;
+	}
+
+	public void setDataEmbarque(Date dataEmbarque) {
+		this.dataEmbarque = dataEmbarque;
+	}
+
+	public BigDecimal getPreco() {
+		return this.preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public Aviao getAviao() {
+		return this.aviao;
+	}
+
+	public void setAviao(Aviao aviao) {
+		this.aviao = aviao;
+	}
+
+	public Local getLocalDestino() {
+		return this.localDestino;
+	}
+
+	public void setLocalDestino(Local localDestino) {
+		this.localDestino = localDestino;
+	}
+
+	public Local getLocalOrigem() {
+		return this.localOrigem;
+	}
+
+	public void setLocalOrigem(Local localOrigem) {
+		this.localOrigem = localOrigem;
+	}
+
 	public Piloto getPiloto() {
-		return piloto;
+		return this.piloto;
 	}
 
 	public void setPiloto(Piloto piloto) {
@@ -125,18 +138,10 @@ public class Voo implements Serializable {
 	}
 
 	public List<Lanche> getLanches() {
-		return lanches;
+		return this.lanches;
 	}
 
 	public void setLanches(List<Lanche> lanches) {
 		this.lanches = lanches;
-	}
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
 	}
 }

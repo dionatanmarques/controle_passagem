@@ -8,29 +8,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "local")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "local_id_seq")
+@SequenceGenerator(name = "local_id_generator", sequenceName = "local_id_seq")
 public class Local implements Serializable {
 
-	private static final long serialVersionUID = 1367822602865675001L;
+	private static final long serialVersionUID = -8489148787239553658L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "local_id_generator")
 	private Integer id;
 
 	@Basic(optional = false)
-	@NotNull(message="nome não pode ser nulo")
-	@NotEmpty(message="nome não pode esta vazio")
+	@NotNull(message = "nome não pode ser nulo")
+	@NotEmpty(message = "nome não pode esta vazio")
 	private String nome;
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -38,7 +36,7 @@ public class Local implements Serializable {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
