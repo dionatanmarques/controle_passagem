@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.hibernate.Session;
 
 import br.edu.fa7.controle_passagem.model.Assento;
+import br.edu.fa7.controle_passagem.model.Aviao;
 @RequestScoped
 public class AssentoDao extends GenericDao<Assento> implements Serializable {
 
@@ -22,5 +23,10 @@ public class AssentoDao extends GenericDao<Assento> implements Serializable {
 		super(Assento.class, null);
 	}
 
+	public void deletaTodos(Aviao aviao){
+		session.createQuery("DELETE FROM Assento a WHERE a.aviao = :aviao")
+		.setParameter("aviao", aviao)
+		.executeUpdate();
+	}
 	
 }
