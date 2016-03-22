@@ -46,6 +46,9 @@
 						<i class="fa fa-plane"></i> Voo
 					</a>
 					</li>
+					<li><a href="${pageContext.request.contextPath}/usuario/">
+							<i class="fa fa-user"></i> Usuários
+					</a></li>
 					<li class="active"><a
 						href="${pageContext.request.contextPath}/area/logout"> <i
 							class="fa fa-power-off"></i> Sair
