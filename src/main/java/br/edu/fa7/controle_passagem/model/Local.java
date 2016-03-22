@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "local")
@@ -22,6 +25,8 @@ public class Local implements Serializable {
 	private Integer id;
 
 	@Basic(optional = false)
+	@NotNull(message="nome não pode ser nulo")
+	@NotEmpty(message="nome não pode esta vazio")
 	private String nome;
 
 	public Integer getId() {

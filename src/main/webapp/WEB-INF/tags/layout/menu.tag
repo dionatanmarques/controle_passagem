@@ -30,13 +30,22 @@
 		<c:if test="${usuarioLogado.logado}">
 			<div class="collapse navbar-collapse" id="menu-principal">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="${pageContext.request.contextPath}/companhia/"> <i
-							class="fa fa-building"></i> Companhia Aérea
+					<li><a href="${pageContext.request.contextPath}/companhia/">
+							<i class="fa fa-building"></i> Companhia Aérea
+					</a></li>
 					<li><a href="${pageContext.request.contextPath}/aviao"> <i
 							class="fa fa-space-shuttle"></i> Frota Aérea
 					</a></li>
+					<li><a href="${pageContext.request.contextPath}/local" /> <i
+						class="fa fa-picture-o"></i> Destinos
+					</a></li>
+					<li><a href="${pageContext.request.contextPath}/lanche" /> <i
+						class="fa fa-coffee"></i> Lanches
+					</a></li>
 					<li><a href="${pageContext.request.contextPath}/voo/cadastro" />
-						<i class="fa fa-plane"></i> Voo </a></li>
+						<i class="fa fa-plane"></i> Voo
+					</a>
+					</li>
 					<li class="active"><a
 						href="${pageContext.request.contextPath}/area/logout"> <i
 							class="fa fa-power-off"></i> Sair

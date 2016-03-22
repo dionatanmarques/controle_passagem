@@ -39,7 +39,6 @@
 		<mapping class="br.edu.fa7.controle_passagem.model.Piloto" />
 		<mapping class="br.edu.fa7.controle_passagem.model.Funcionario" />
 		<mapping class="br.edu.fa7.controle_passagem.model.Lanche" />
-		<mapping class="br.edu.fa7.controle_passagem.model.Passageiro" />
 		<mapping class="br.edu.fa7.controle_passagem.model.Voo" />
 		<mapping class="br.edu.fa7.controle_passagem.model.Passagem" />
 

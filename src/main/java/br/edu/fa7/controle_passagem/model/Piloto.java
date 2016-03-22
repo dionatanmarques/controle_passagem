@@ -6,6 +6,9 @@ import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "piloto")
@@ -15,6 +18,8 @@ public class Piloto extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 3742179521600451256L;
 
 	@Basic(optional = false)
+	@NotNull(message="CHT não pode ser nulo")
+	@NotEmpty(message="CHT não pode esta vazio")
 	private String cht;
 
 	public String getCht() {

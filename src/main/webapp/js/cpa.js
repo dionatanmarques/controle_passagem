@@ -30,6 +30,7 @@ function initDatepicker() {
 function initMask() {
 	// Somente números
 	$(".numero").mask("0#");
+	$('.money').mask("#.##0,00", {reverse: true});
 };
 
 $(document).ajaxStart(function() {

@@ -1,20 +1,25 @@
 package br.edu.fa7.controle_passagem.cargas;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+
 import br.edu.fa7.controle_passagem.dao.AssentoDao;
 import br.edu.fa7.controle_passagem.dao.AviaoDao;
 import br.edu.fa7.controle_passagem.dao.CompanhiaAereaDao;
 import br.edu.fa7.controle_passagem.dao.FuncionarioDao;
 import br.edu.fa7.controle_passagem.dao.LocalDao;
+import br.edu.fa7.controle_passagem.dao.LancheDao;
 import br.edu.fa7.controle_passagem.factory.HibernateFactory;
 import br.edu.fa7.controle_passagem.model.Assento;
 import br.edu.fa7.controle_passagem.model.Aviao;
 import br.edu.fa7.controle_passagem.model.CompanhiaAerea;
 import br.edu.fa7.controle_passagem.model.Funcionario;
+import br.edu.fa7.controle_passagem.model.Lanche;
 import br.edu.fa7.controle_passagem.model.Local;
+import br.edu.fa7.controle_passagem.util.GeradorDeAssento;
 
 public class CargaInicial {
 
@@ -56,24 +61,8 @@ public class CargaInicial {
 				av.setNome(companhiaAerea.getNome() + "-" + e);
 				aviDao.salvar(av);
 
-				for (int j = 0; j < 10; j++) {
-					Assento assA = new Assento();
-					assA.setAviao(av);
-					assA.setNome("A" + j);
-					assDao.salvar(assA);
-					Assento assB = new Assento();
-					assB.setAviao(av);
-					assB.setNome("B" + j);
-					assDao.salvar(assB);
-					Assento assC = new Assento();
-					assC.setAviao(av);
-					assC.setNome("C" + j);
-					assDao.salvar(assC);
-					Assento assD = new Assento();
-					assD.setAviao(av);
-					assD.setNome("D" + j);
-					assDao.salvar(assD);
-				}
+				GeradorDeAssento gerarAssento = new GeradorDeAssento(av, new AssentoDao(session));
+				gerarAssento.gerarAssentos();
 			}
 		}
 
@@ -86,6 +75,17 @@ public class CargaInicial {
 			local.setNome(locais[j]);
 			locDao.salvar(local);
 		}
+		
+		LancheDao lancheDao = new LancheDao(session);
+		String[] lanches = { "HAMBUGER", "SALADA", "SALGADO"};
+		for (int j = 0; j < lanches.length; j++) {
+			Lanche lanche = new Lanche();
+			lanche.setNome(lanches[j]);
+			lanche.setPreco(new BigDecimal(5.50));
+			lancheDao.salvar(lanche);
+		}
+		
+		
 
 		FuncionarioDao funDao = new FuncionarioDao(session);
 
