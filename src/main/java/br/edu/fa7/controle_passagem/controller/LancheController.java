@@ -11,10 +11,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.edu.fa7.controle_passagem.annotations.Restrito;
-import br.edu.fa7.controle_passagem.dao.LocalDao;
 import br.edu.fa7.controle_passagem.dao.LancheDao;
 import br.edu.fa7.controle_passagem.model.Lanche;
-import br.edu.fa7.controle_passagem.model.Local;
 
 @Controller
 @Path("/lanche")

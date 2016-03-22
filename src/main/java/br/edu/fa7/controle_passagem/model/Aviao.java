@@ -3,7 +3,6 @@ package br.edu.fa7.controle_passagem.model;
 import java.io.Serializable;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,13 +18,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "aviao")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "aviao_id_seq")
+@SequenceGenerator(name = "aviao_id_generator", sequenceName = "aviao_id_seq")
 public class Aviao implements Serializable {
 
-	private static final long serialVersionUID = 7245709087922444742L;
+	private static final long serialVersionUID = 4842733333188668037L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "aviao_id_generator")
 	private Integer id;
 
 	@Basic(optional = false)
@@ -38,7 +37,7 @@ public class Aviao implements Serializable {
 	private CompanhiaAerea companhia;
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -46,7 +45,7 @@ public class Aviao implements Serializable {
 	}
 
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 
 	public void setNome(String nome) {
@@ -54,7 +53,7 @@ public class Aviao implements Serializable {
 	}
 
 	public CompanhiaAerea getCompanhia() {
-		return companhia;
+		return this.companhia;
 	}
 
 	public void setCompanhia(CompanhiaAerea companhia) {

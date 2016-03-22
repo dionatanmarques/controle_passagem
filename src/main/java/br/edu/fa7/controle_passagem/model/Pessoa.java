@@ -17,47 +17,47 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "pessoa")
-@SequenceGenerator(name = "SEQUENCE", sequenceName = "pessoa_id_seq")
 @Inheritance(strategy = InheritanceType.JOINED)
+@SequenceGenerator(name = "pessoa_id_generator", sequenceName = "pessoa_id_seq")
 public class Pessoa implements Serializable {
 
-	private static final long serialVersionUID = 8217555120242432600L;
+	private static final long serialVersionUID = -5844168005591893705L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQUENCE")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_id_generator")
 	private Integer id;
 
 	@Basic(optional = false)
-	@NotNull(message="nome não pode ser nulo")
-	@NotEmpty(message="nome não pode esta vazio")
-	private String nome;
-
-	@Basic(optional = false)
-	@NotNull(message="cpf não pode ser nulo")
-	@NotEmpty(message="cpf não pode esta vazio")
+	@NotNull(message = "cpf não pode ser nulo")
+	@NotEmpty(message = "cpf não pode esta vazio")
 	private String cpf;
 
+	@Basic(optional = false)
+	@NotNull(message = "nome não pode ser nulo")
+	@NotEmpty(message = "nome não pode esta vazio")
+	private String nome;
+
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getCpf() {
-		return cpf;
+		return this.cpf;
 	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }
