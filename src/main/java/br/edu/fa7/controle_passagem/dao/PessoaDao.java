@@ -6,6 +6,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -37,5 +38,16 @@ public class PessoaDao extends GenericDao<Pessoa> implements Serializable {
 		return (Pessoa) session.createCriteria(classe)
 				.add(Restrictions.eq("id", cod))
 				.uniqueResult();
+	}
+
+	public Pessoa buscarPorCpf(Pessoa pessoa) {
+		String hql = "SELECT p FROM Pessoa p WHERE p.cpf = :cpf";
+		Query query = session.createQuery(hql);
+		query.setParameter("cpf", pessoa.getCpf());
+		try {
+			return (Pessoa) query.uniqueResult();
+		} catch (Exception e) {
+			return null;
+		}
 	}
 }

@@ -3,8 +3,7 @@
 <layout:page titulo="Compra de Passagem">
 	<jsp:body>
 		<div class="row">
-			<div
-				class="col-md-offset-3 col-md-6 col-md-offset-3 panel panel-default">
+			<div class="col-md-offset-3 col-md-6 col-md-offset-3 panel panel-default">
 				<div class="panel-body">
 					<form action="${pageContext.request.contextPath}/voo/pesquisar"
 						method="post">

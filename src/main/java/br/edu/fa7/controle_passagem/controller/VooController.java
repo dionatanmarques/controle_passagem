@@ -1,6 +1,7 @@
 package br.edu.fa7.controle_passagem.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -65,7 +66,13 @@ public class VooController {
 			result.include("voo", voo);
 		}
 	}
-	
+
+	@Post("/confirmar")
+	public void confirmar(Voo vooIda, Voo vooVolta) {
+		List<Voo> voos = Arrays.asList(vooIda, vooVolta);
+		result.redirectTo(PessoaController.class).cadastroCliente(voos);
+	}
+
 	@Get
 	@Restrito
 	public void cadastro(){
