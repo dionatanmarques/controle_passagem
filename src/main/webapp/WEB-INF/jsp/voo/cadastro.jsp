@@ -54,13 +54,23 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="dataEmbarque">Data Hora de Embarque</label>
-							<input id="dataEmbarque" class="form-control date-time" type="text" 
-							name="voo.dataEmbarque" value="${voo.dataEmbarque}"/>
+						<div class="input-group date datepicker-with-hours">
+							<input id="dataEmbarque" class="form-control" type="text"
+								name="voo.dataEmbarque" placeholder="dd/mm/yyyy hh:mm" value="${voo.dataEmbarque}" />
+							<span class="input-group-addon">
+								<span class="fa fa-calendar"></span>
+							</span>
+						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="dataDesembarque">Data Hora de Dembarque</label>
-							<input id="dataDesembarque" class="form-control date-time" type="text" 
-							name="voo.dataDesembarque" value="${voo.dataDesembarque}"/>
+						<div class="input-group date datepicker-with-hours">
+							<input id="dataDesembarque" class="form-control" type="text"
+								name="voo.dataDesembarque" placeholder="dd/mm/yyyy hh:mm" value="${voo.dataDesembarque}" />
+							<span class="input-group-addon">
+								<span class="fa fa-calendar"></span>
+							</span>
+						</div>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="preco">Preço</label> <input id="preco"
