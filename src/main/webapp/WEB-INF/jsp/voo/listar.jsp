@@ -32,12 +32,12 @@
 							</thead>
 							<tbody>
 								<c:choose>
-									<c:when test="${not empty voosVolta}">
-										<c:forEach var="voo" items="${voosVolta}">
+									<c:when test="${not empty voosIda}">
+										<c:forEach var="voo" items="${voosIda}">
 											<tr>
 												<td>
 													<label class="radio-inline">
-														<input type="radio" name="vooVolta" />
+														<input type="radio" name="vooIda" value="${voo.id}" />
 													</label>
 												</td>
 												<td><fmt:formatDate value="${voo.dataEmbarque}" pattern="HH:mm" /></td>
@@ -48,7 +48,7 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td colspan="3" class="text-center">Não há vôos nessa categoria!</td>
+											<td colspan="4" class="text-center">Não há vôos nessa categoria!</td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -82,12 +82,12 @@
 							</thead>
 							<tbody>
 								<c:choose>
-									<c:when test="${not empty voosIda}">
-										<c:forEach var="voo" items="${voosIda}">
+									<c:when test="${not empty voosVolta}">
+										<c:forEach var="voo" items="${voosVolta}">
 											<tr>
 												<td>
 													<label class="radio-inline">
-														<input type="radio" name="vooIda" />
+														<input type="radio" name="vooVolta" value="${voo.id}" />
 													</label>
 												</td>
 												<td><fmt:formatDate value="${voo.dataEmbarque}" pattern="HH:mm" /></td>
@@ -98,7 +98,7 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-											<td colspan="3" class="text-center">Não há vôos nessa categoria!</td>
+											<td colspan="4" class="text-center">Não há vôos nessa categoria!</td>
 										</tr>
 									</c:otherwise>
 								</c:choose>

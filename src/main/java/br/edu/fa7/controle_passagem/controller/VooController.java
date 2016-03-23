@@ -18,10 +18,8 @@ import br.edu.fa7.controle_passagem.dao.CompanhiaAereaDao;
 import br.edu.fa7.controle_passagem.dao.LocalDao;
 import br.edu.fa7.controle_passagem.dao.PilotoDao;
 import br.edu.fa7.controle_passagem.dao.VooDao;
-import br.edu.fa7.controle_passagem.model.Local;
 import br.edu.fa7.controle_passagem.model.Voo;
 import br.edu.fa7.controle_passagem.util.DateUtil;
-import br.edu.fa7.controle_passagem.util.PesquisaVoo;
 
 @Controller
 @Path("/voo")
@@ -41,18 +39,19 @@ public class VooController {
 	private LocalDao localDao;
 
 	@Post
-	public void pesquisar(PesquisaVoo pesquisaVoo) {
-		// TODO: Pesquisar Voos
-		Local origem = localDao.carregar(pesquisaVoo.getOrigem());
-		Local destino = localDao.carregar(pesquisaVoo.getDestino());
-		Voo voo = new Voo();
-		voo.setLocalOrigem(origem);
-		voo.setLocalDestino(destino);
-		List<Voo> voosIda = dao.buscarPorData(pesquisaVoo.getDataIda(),origem,destino);
+	public void pesquisar(Voo voo) {
+		List<Voo> voosIda = dao.buscarPorData(voo);
 		List<Voo> voosVolta = new ArrayList<Voo>();
-		if(pesquisaVoo.isTipoIdaVolta()){
-			voosVolta = dao.buscarPorData(pesquisaVoo.getDataVolta(),destino,origem);
+		if (voo.isTipoIdaVolta()) {
+			// Inverte os parâmetros do vôo para pesquisa de vôos voltando
+			Voo vooVolta = new Voo();
+			vooVolta.setDataEmbarque(voo.getDataDesembarque());
+			vooVolta.setLocalDestino(voo.getLocalOrigem());
+			vooVolta.setLocalOrigem(voo.getLocalDestino());
+			voosVolta = dao.buscarPorData(vooVolta);
 		}
+		voo.setLocalOrigem(localDao.carregar(voo.getLocalOrigem().getId()));
+		voo.setLocalDestino(localDao.carregar(voo.getLocalDestino().getId()));
 		result.include("voosIda", voosIda);
 		result.include("voosVolta", voosVolta);
 		result.redirectTo(this).listar(voo);

@@ -1,18 +1,15 @@
 package br.edu.fa7.controle_passagem.dao;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.edu.fa7.controle_passagem.model.Local;
 import br.edu.fa7.controle_passagem.model.Voo;
 
 @RequestScoped
@@ -34,23 +31,19 @@ public class VooDao extends GenericDao<Voo> implements Serializable {
 				.add(Restrictions.eq("id", cod)).uniqueResult();
 	}
 
-	public List<Voo> buscarPorData(Date dataIda, Local origem, Local destino) {
-		Calendar dataIdaInicio = Calendar.getInstance();
-		dataIdaInicio.setTime(dataIda);
-		dataIdaInicio.set(Calendar.HOUR, 0);
-		dataIdaInicio.set(Calendar.MINUTE, 0);
-		dataIdaInicio.set(Calendar.SECOND, 0);
-		Date inicio = dataIdaInicio.getTime();
-		dataIdaInicio.set(Calendar.HOUR, 23);
-		dataIdaInicio.set(Calendar.MINUTE, 59);
-		dataIdaInicio.set(Calendar.SECOND, 59);
-		
-		return session.createCriteria(classe)
-				.add(Restrictions.ge("dataEmbarque", inicio))
-				.add(Restrictions.le("dataEmbarque", dataIdaInicio.getTime()))
-				.add(Restrictions.eq("localOrigem", origem))
-				.add(Restrictions.eq("localDestino", destino))
-				.list();
+	@SuppressWarnings("unchecked")
+	public List<Voo> buscarPorData(Voo voo) {
+		StringBuilder hql = new StringBuilder();
+		hql.append("SELECT v");
+		hql.append("	FROM Voo v");
+		hql.append("	WHERE v.localOrigem.id = :localOrigem");
+		hql.append("	AND v.localDestino.id = :localDestino");
+		hql.append("	AND CAST(v.dataEmbarque AS date) = :dataEmbarque");
+		Query query = session.createQuery(hql.toString());
+		query.setParameter("localOrigem", voo.getLocalOrigem().getId());
+		query.setParameter("localDestino", voo.getLocalDestino().getId());
+		query.setParameter("dataEmbarque", voo.getDataEmbarque());
+		return query.list();
 	}
 
 }

@@ -10,16 +10,16 @@
 						method="post">
 						<div class="form-group text-center">
 							<label class="radio-inline">
-								<input type="radio" name="pesquisaVoo.tipoIdaVolta" checked /> IDA E VOLTA
+								<input type="radio" name="voo.tipoIdaVolta" value="true" checked /> IDA E VOLTA
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="pesquisaVoo.tipoIda" /> SOMENTE IDA
+								<input type="radio" name="voo.tipoIdaVolta" value="false" /> SOMENTE IDA
 							</label>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="origemId">Local de Origem </label> <select
 								onchange="carregaDestino();" class="form-control"
-								name="pesquisaVoo.origem" id="origemId">
+								name="voo.localOrigem.id" id="origemId">
 							<c:forEach items="${listaDeOrigens}" var="origem">
 								<option value="${origem.id}">${origem.nome}</option>
 							</c:forEach>
@@ -27,7 +27,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							<label for="destinoId">Local de Destino </label> <select
-								class="form-control" name="pesquisaVoo.destino" id="destinoId">
+								class="form-control" name="voo.localDestino.id" id="destinoId">
 							<option>Selecione primeiro a origem</option>
 						</select>
 						</div>
@@ -35,7 +35,7 @@
 							<label for="ida">Ida</label>
 							<div class="input-group date datepicker">
 								<input id="ida" class="form-control" type="text"
-									name="pesquisaVoo.dataIda" placeholder="dd/mm/yyyy" />
+									name="voo.dataEmbarque" placeholder="dd/mm/yyyy" />
 								<span class="input-group-addon">
 									<span class="fa fa-calendar"></span>
 								</span>
@@ -45,7 +45,7 @@
 							<label for="volta">Volta</label>
 							<div class="input-group date datepicker">
 								<input id="volta" class="form-control" type="text"
-									name="pesquisaVoo.dataVolta" placeholder="dd/mm/yyyy" />
+									name="voo.dataDesembarque" placeholder="dd/mm/yyyy" />
 								<span class="input-group-addon">
 									<span class="fa fa-calendar"></span>
 								</span>

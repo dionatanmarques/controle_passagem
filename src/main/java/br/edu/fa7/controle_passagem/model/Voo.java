@@ -20,6 +20,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "voo")
@@ -72,6 +73,9 @@ public class Voo implements Serializable {
 		}
 	)
 	private List<Lanche> lanches;
+
+	@Transient
+	private boolean tipoIdaVolta;
 
 	public Integer getId() {
 		return this.id;
@@ -143,5 +147,13 @@ public class Voo implements Serializable {
 
 	public void setLanches(List<Lanche> lanches) {
 		this.lanches = lanches;
+	}
+
+	public boolean isTipoIdaVolta() {
+		return tipoIdaVolta;
+	}
+
+	public void setTipoIdaVolta(boolean tipoIdaVolta) {
+		this.tipoIdaVolta = tipoIdaVolta;
 	}
 }
