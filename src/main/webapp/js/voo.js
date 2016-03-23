@@ -20,3 +20,13 @@ function carregaDestino() {
 		}
 	});
 }
+
+function criarPreco(){
+	var preco = 0;
+	$("input[type=radio]:checked").each(function() {
+		preco += parseFloat($(this).attr("preco"));
+	});
+	$("#btn-comprar").attr("disabled",false);
+	$("#Totalpreco").html("");
+	$("#Totalpreco").html(converteFloatMoeda(preco));
+}

@@ -1,8 +1,17 @@
 package br.edu.fa7.controle_passagem.model;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "passagem")
@@ -17,18 +26,6 @@ public class Passagem implements Serializable {
 
 	@Column(name = "porcentagem_desconto")
 	private Integer porcentagemDesconto;
-
-	@ManyToMany
-	@JoinTable(
-		name = "checkin",
-		joinColumns = {
-			@JoinColumn(name = "id_passagem")
-		},
-		inverseJoinColumns = {
-			@JoinColumn(name = "id_assento")
-		}
-	)
-	private List<Assento> assentos;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_pessoa", nullable = false)
@@ -52,14 +49,6 @@ public class Passagem implements Serializable {
 
 	public void setPorcentagemDesconto(Integer porcentagemDesconto) {
 		this.porcentagemDesconto = porcentagemDesconto;
-	}
-
-	public List<Assento> getAssentos() {
-		return this.assentos;
-	}
-
-	public void setAssentos(List<Assento> assentos) {
-		this.assentos = assentos;
 	}
 
 	public Pessoa getPessoa() {

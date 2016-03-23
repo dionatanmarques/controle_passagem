@@ -41,6 +41,7 @@
 					<div class="form-group col-md-6">
 						<label for="origemId">Local de Origem </label> <select onchange="carregaDestino();"
 							class="form-control" name="voo.localOrigem.id" id="origemId">
+							<option value="">Selecione</option>
 							<c:forEach items="${listaDeOrigens}" var="origem">
 								<option value="${origem.id}">${origem.nome}</option>
 							</c:forEach>
@@ -76,6 +77,28 @@
 						<label for="preco">Preço</label> <input id="preco"
 							class="form-control money" name="voo.preco" type="text"
 							placeholder="Preço da Vôo" value="${voo.preco}" />
+					</div>
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Lanches Oferecidos</div>
+							<div class="panel-body">
+								<div class="row">
+									<c:forEach items="${listaDeLanches}" var="lanche">
+										<div class="col-lg-3" style="margin-bottom: 20px">
+											<div class="input-group">
+												<span class="input-group-addon"> <input
+													type="checkbox" name="lanches" value="${lanche.id}"
+													aria-label="...">
+												</span>
+												<div class="form-control" aria-label="...">${lanche.nome}</div>
+											</div>
+											<!-- /input-group -->
+										</div>
+										<!-- /.col-lg-6 -->
+									</c:forEach>
+								</div>
+							</div>
+						</div>
 					</div>
 					<button class="btn btn-primary pull-right" type="submit">Salvar</button>
 				</form>

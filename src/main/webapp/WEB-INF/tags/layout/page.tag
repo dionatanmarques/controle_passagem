@@ -64,6 +64,9 @@
 		<!-- CPA -->
 		<script src="${pageContext.request.contextPath}/js/cpa.js" type="text/javascript"></script>
 
+		<!-- funcoes_de_conversao.js -->
+		<script src="${pageContext.request.contextPath}/js/funcoes_de_conversao.js" type="text/javascript"></script>
+
 		<!-- VOO -->
 		<script src="${pageContext.request.contextPath}/js/voo.js" type="text/javascript"></script>
 

@@ -19,6 +19,7 @@
 							<label for="origemId">Local de Origem </label> <select
 								onchange="carregaDestino();" class="form-control"
 								name="voo.localOrigem.id" id="origemId">
+							<option value="">Selecione</option>
 							<c:forEach items="${listaDeOrigens}" var="origem">
 								<option value="${origem.id}">${origem.nome}</option>
 							</c:forEach>

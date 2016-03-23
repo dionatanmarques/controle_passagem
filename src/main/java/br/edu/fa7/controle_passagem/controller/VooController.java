@@ -16,9 +16,11 @@ import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.edu.fa7.controle_passagem.annotations.Restrito;
 import br.edu.fa7.controle_passagem.dao.CompanhiaAereaDao;
+import br.edu.fa7.controle_passagem.dao.LancheDao;
 import br.edu.fa7.controle_passagem.dao.LocalDao;
 import br.edu.fa7.controle_passagem.dao.PilotoDao;
 import br.edu.fa7.controle_passagem.dao.VooDao;
+import br.edu.fa7.controle_passagem.model.Lanche;
 import br.edu.fa7.controle_passagem.model.Voo;
 import br.edu.fa7.controle_passagem.util.DateUtil;
 
@@ -38,6 +40,8 @@ public class VooController {
 	private PilotoDao pilotoDao;
 	@Inject
 	private LocalDao localDao;
+	@Inject
+	private LancheDao lancheDao;
 
 	@Post
 	public void pesquisar(Voo voo) {
@@ -79,13 +83,19 @@ public class VooController {
 		result.include("listaDeCompanhia", companhiaDao.listarTodos());
 		result.include("listaDePilotos", pilotoDao.listarTodos());
 		result.include("listaDeOrigens", localDao.listarTodos());
+		result.include("listaDeLanches", lancheDao.listarTodos());
 	}
 	
 	@Post
 	@Restrito
-	public void cadastrar(String dataEmbarque, String dataDesembarque, @Valid Voo voo){
+	public void cadastrar(String dataEmbarque, String dataDesembarque, @Valid Voo voo, int[] lanches){
 		voo.setDataEmbarque(DateUtil.stringToDate(dataEmbarque, "dd/MM/yyyy HH:mm"));
 		voo.setDataDesembarque(DateUtil.stringToDate(dataDesembarque, "dd/MM/yyyy HH:mm"));
+		List<Lanche> lanchesPopulado = new ArrayList<Lanche>();
+		for (int i = 0; i < lanches.length; i++) {
+			lanchesPopulado.add(lancheDao.carregar(lanches[i]));
+		}
+		voo.setLanches(lanchesPopulado);
 
 		validator.onErrorRedirectTo(this).cadastro();
 
