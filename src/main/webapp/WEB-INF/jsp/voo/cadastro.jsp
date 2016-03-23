@@ -23,7 +23,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="aviaoId">Aeronaves </label> <select							
-							class="form-control" name="aviaoId" id="aviaoId">
+							class="form-control" name="voo.aviao.id" id="aviaoId">
 							<option>Selecione primeiro a companhia</option>
 							<c:forEach items="${listaDeAvioes}" var="nave">
 								<option value="${nave.id}">${nave.nome}</option>
@@ -32,7 +32,7 @@
 					</div>
 					<div class="form-group col-md-4">
 						<label for="pilotoId">Piloto </label> <select
-							class="form-control" name="pilotoId" id="pilotoId">
+							class="form-control" name="voo.piloto.id" id="pilotoId">
 							<c:forEach items="${listaDePilotos}" var="piloto">
 								<option value="${piloto.id}">${piloto.nome}</option>
 							</c:forEach>
@@ -40,7 +40,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="origemId">Local de Origem </label> <select onchange="carregaDestino();"
-							class="form-control" name="origemId" id="origemId">
+							class="form-control" name="voo.localOrigem.id" id="origemId">
 							<c:forEach items="${listaDeOrigens}" var="origem">
 								<option value="${origem.id}">${origem.nome}</option>
 							</c:forEach>
@@ -48,7 +48,7 @@
 					</div>
 					<div class="form-group col-md-6">
 						<label for="destinoId">Local de Destino </label> <select
-							class="form-control" name="destinoId" id="destinoId">
+							class="form-control" name="voo.localDestino.id" id="destinoId">
 							<option>Selecione primeiro a origem</option>
 						</select>
 					</div>
@@ -56,7 +56,7 @@
 						<label for="dataEmbarque">Data Hora de Embarque</label>
 						<div class="input-group date datepicker-with-hours">
 							<input id="dataEmbarque" class="form-control" type="text"
-								name="voo.dataEmbarque" placeholder="dd/mm/yyyy hh:mm" value="${voo.dataEmbarque}" />
+								name="dataEmbarque" placeholder="dd/mm/yyyy hh:mm" value="${voo.dataEmbarque}" />
 							<span class="input-group-addon">
 								<span class="fa fa-calendar"></span>
 							</span>
@@ -66,7 +66,7 @@
 						<label for="dataDesembarque">Data Hora de Dembarque</label>
 						<div class="input-group date datepicker-with-hours">
 							<input id="dataDesembarque" class="form-control" type="text"
-								name="voo.dataDesembarque" placeholder="dd/mm/yyyy hh:mm" value="${voo.dataDesembarque}" />
+								name="dataDesembarque" placeholder="dd/mm/yyyy hh:mm" value="${voo.dataDesembarque}" />
 							<span class="input-group-addon">
 								<span class="fa fa-calendar"></span>
 							</span>
