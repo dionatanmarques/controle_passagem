@@ -27,4 +27,10 @@ public class Funcionario extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }

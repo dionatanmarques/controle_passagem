@@ -58,4 +58,10 @@ public class Lanche implements Serializable {
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }

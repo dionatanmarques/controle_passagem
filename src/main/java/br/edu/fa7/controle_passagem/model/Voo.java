@@ -156,4 +156,10 @@ public class Voo implements Serializable {
 	public void setTipoIdaVolta(boolean tipoIdaVolta) {
 		this.tipoIdaVolta = tipoIdaVolta;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }

@@ -29,4 +29,10 @@ public class Piloto extends Pessoa implements Serializable {
 	public void setCht(String cht) {
 		this.cht = cht;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }

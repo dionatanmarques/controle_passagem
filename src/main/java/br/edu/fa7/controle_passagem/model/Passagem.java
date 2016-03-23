@@ -66,4 +66,10 @@ public class Passagem implements Serializable {
 	public void setVoo(Voo voo) {
 		this.voo = voo;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }

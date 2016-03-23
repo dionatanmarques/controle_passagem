@@ -42,4 +42,10 @@ public class Local implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }

@@ -59,4 +59,10 @@ public class Aviao implements Serializable {
 	public void setCompanhia(CompanhiaAerea companhia) {
 		this.companhia = companhia;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }
