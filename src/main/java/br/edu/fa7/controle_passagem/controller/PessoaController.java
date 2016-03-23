@@ -8,23 +8,23 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.edu.fa7.controle_passagem.annotations.Restrito;
-import br.edu.fa7.controle_passagem.dao.UsuarioDao;
+import br.edu.fa7.controle_passagem.dao.PessoaDao;
 
 @Restrito
 @Controller
-@Path("/usuario")
-public class UsuarioController {
+@Path("/pessoa")
+public class PessoaController {
 
 	private final Result result;
-	private final UsuarioDao usuarioDao;
+	private final PessoaDao dao;
 
 	@Inject
-	public UsuarioController(Result result, UsuarioDao usuarioDao) {
+	public PessoaController(Result result, PessoaDao dao) {
 		this.result = result;
-		this.usuarioDao = usuarioDao;
+		this.dao = dao;
 	}
 
-	public UsuarioController() {
+	public PessoaController() {
 		this(null, null);
 	}
 
@@ -41,13 +41,13 @@ public class UsuarioController {
 	@Post("/buscar")
 	public void buscar(String nome) {
 		nome = (nome == null) ? "": nome;
-		result.include("usuarios", usuarioDao.buscarPorNome(nome));
+		result.include("listaDePessoas", dao.buscarPorNome(nome));
 		result.redirectTo(this).index();
 	}
 
 	@Get("/edita")
 	public void edita(int cod){
-		result.include("usuario", usuarioDao.carregar(cod));
+		result.include("pessoa", dao.carregar(cod));
 		result.redirectTo(this).cadastro();
 	}
 }

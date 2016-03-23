@@ -37,18 +37,23 @@
 							class="fa fa-space-shuttle"></i> Frota Aérea
 					</a></li>
 					<li><a href="${pageContext.request.contextPath}/local" /> <i
-						class="fa fa-picture-o"></i> Destinos
-					</a></li>
+						class="fa fa-picture-o"></i> Destinos </a></li>
 					<li><a href="${pageContext.request.contextPath}/lanche" /> <i
-						class="fa fa-coffee"></i> Lanches
-					</a></li>
+						class="fa fa-coffee"></i> Lanches </a></li>
 					<li><a href="${pageContext.request.contextPath}/voo/cadastro" />
-						<i class="fa fa-plane"></i> Voo
-					</a>
-					</li>
-					<li><a href="${pageContext.request.contextPath}/usuario/">
-							<i class="fa fa-user"></i> Usuários
-					</a></li>
+						<i class="fa fa-plane"></i> Voo </a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><i class="fa fa-users"></i></i>Funcionários <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="${pageContext.request.contextPath}/funcionario"> <i
+								class="fa fa-user-secret"></i> Usuários Sistema </a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="${pageContext.request.contextPath}/piloto/">
+									<i class="fa fa-user"></i> Piloto
+							</a></li>
+							<li role="separator" class="divider"></li>
+						</ul></li>
 					<li class="active"><a
 						href="${pageContext.request.contextPath}/area/logout"> <i
 							class="fa fa-power-off"></i> Sair

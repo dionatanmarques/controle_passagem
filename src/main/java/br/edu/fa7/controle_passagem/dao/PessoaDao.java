@@ -13,16 +13,16 @@ import org.hibernate.criterion.Restrictions;
 import br.edu.fa7.controle_passagem.model.Pessoa;
 
 @RequestScoped
-public class UsuarioDao extends GenericDao<Pessoa> implements Serializable {
+public class PessoaDao extends GenericDao<Pessoa> implements Serializable {
 
 	private static final long serialVersionUID = 6617429248950734826L;
 
 	@Inject
-	public UsuarioDao(Session session) {
+	public PessoaDao(Session session) {
 		super(Pessoa.class, session);
 	}
 
-	public UsuarioDao() {
+	public PessoaDao() {
 		super(Pessoa.class, null);
 	}
 
