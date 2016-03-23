@@ -59,4 +59,10 @@ public class Assento implements Serializable {
 	public void setAviao(Aviao aviao) {
 		this.aviao = aviao;
 	}
+
+	@Override
+	public String toString() {
+		String s = this.getClass().getSimpleName() + " - id: " + getId() + "\n";
+		return s;
+	}
 }
