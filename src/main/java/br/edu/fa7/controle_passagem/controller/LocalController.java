@@ -20,7 +20,6 @@ import br.edu.fa7.controle_passagem.model.Local;
 
 @Controller
 @Path("/local")
-@Restrito
 public class LocalController {
 	
 	@Inject
@@ -37,6 +36,7 @@ public class LocalController {
 	}
 	
 	@Post
+	@Restrito
 	public void buscar(String nome){
 		nome = (nome == null) ? "": nome;
 		result.include("listaLocais", dao.buscarPorNome(nome));
@@ -44,12 +44,14 @@ public class LocalController {
 	}
 	
 	@Get
+	@Restrito
 	public void edita(int cod){
 		result.include("local", dao.carregar(cod));
 		result.redirectTo(this).cadastro();
 	}
 	
 	@Get
+	@Restrito
 	public void remove(int cod){
 		Local local = dao.carregar(cod);
 		dao.deletar(local);
@@ -58,11 +60,13 @@ public class LocalController {
 	}
 	
 	@Get
+	@Restrito
 	public void cadastro() {
 		
 	}
 	
 	@Post
+	@Restrito
 	public void cadastrar(@Valid Local local){
 		
 		validator.onErrorRedirectTo(this).cadastro();

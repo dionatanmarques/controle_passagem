@@ -1,6 +1,7 @@
 package br.edu.fa7.controle_passagem.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ import br.edu.fa7.controle_passagem.model.Aviao;
 import br.edu.fa7.controle_passagem.model.Local;
 import br.edu.fa7.controle_passagem.model.Piloto;
 import br.edu.fa7.controle_passagem.model.Voo;
+import br.edu.fa7.controle_passagem.util.PesquisaVoo;
 
 @Controller
 @Path("/voo")
@@ -43,10 +45,20 @@ public class VooController {
 	private LocalDao localDao;
 
 	@Post
-	public void pesquisar(Voo voo) {
+	public void pesquisar(PesquisaVoo pesquisaVoo) {
 		// TODO: Pesquisar Voos
-		result.include("voosIda", new ArrayList<>());
-		result.include("voosVolta", new ArrayList<>());
+		Local origem = localDao.carregar(pesquisaVoo.getOrigem());
+		Local destino = localDao.carregar(pesquisaVoo.getDestino());
+		Voo voo = new Voo();
+		voo.setLocalOrigem(origem);
+		voo.setLocalDestino(destino);
+		List<Voo> voosIda = dao.buscarPorData(pesquisaVoo.getDataIda(),origem,destino);
+		List<Voo> voosVolta = new ArrayList<Voo>();
+		if(pesquisaVoo.isTipoIdaVolta()){
+			voosVolta = dao.buscarPorData(pesquisaVoo.getDataVolta(),destino,origem);
+		}
+		result.include("voosIda", voosIda);
+		result.include("voosVolta", voosVolta);
 		result.redirectTo(this).listar(voo);
 	}
 

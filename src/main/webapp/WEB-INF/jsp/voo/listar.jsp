@@ -27,6 +27,7 @@
 									<th></th>
 									<th>Partindo</th>
 									<th>Chegando</th>
+									<th>Valor</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -40,6 +41,8 @@
 													</label>
 												</td>
 												<td><fmt:formatDate value="${voo.dataEmbarque}" pattern="HH:mm" /></td>
+												<td><fmt:formatDate value="${voo.dataDesembarque}" pattern="HH:mm" /></td>
+												<td><fmt:formatNumber value="${voo.preco}" minFractionDigits="2" type="currency"/></td>
 											</tr>
 										</c:forEach>
 									</c:when>
@@ -74,6 +77,7 @@
 									<th></th>
 									<th>Partindo</th>
 									<th>Chegando</th>
+									<th>Preço</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -87,6 +91,8 @@
 													</label>
 												</td>
 												<td><fmt:formatDate value="${voo.dataEmbarque}" pattern="HH:mm" /></td>
+												<td><fmt:formatDate value="${voo.dataDesembarque}" pattern="HH:mm" /></td>
+												<td><fmt:formatNumber value="${voo.preco}" minFractionDigits="2" type="currency"/></td>
 											</tr>
 										</c:forEach>
 									</c:when>
