@@ -37,9 +37,7 @@
 											<c:forEach var="voo" items="${voosIda}">
 												<tr>
 													<td>
-														<label class="radio-inline">
-															<input type="radio" name="vooIda.id" value="${voo.id}" />
-														</label>
+														<input type="radio" name="vooIda.id" value="${voo.id}" />
 													</td>
 													<td><fmt:formatDate value="${voo.dataEmbarque}" pattern="HH:mm" /></td>
 													<td><fmt:formatDate value="${voo.dataDesembarque}" pattern="HH:mm" /></td>
@@ -88,9 +86,7 @@
 												<c:forEach var="voo" items="${voosVolta}">
 													<tr>
 														<td>
-															<label class="radio-inline">
-																<input type="radio" name="vooVolta.id" value="${voo.id}" />
-															</label>
+															<input type="radio" name="vooVolta.id" value="${voo.id}" />
 														</td>
 														<td><fmt:formatDate value="${voo.dataEmbarque}" pattern="HH:mm" /></td>
 														<td><fmt:formatDate value="${voo.dataDesembarque}" pattern="HH:mm" /></td>
