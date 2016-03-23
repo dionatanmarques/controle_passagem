@@ -27,11 +27,11 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<!-- C3P0 -->
-		<property name="hibernate.c3p0.min_size">5</property>
-		<property name="hibernate.c3p0.max_size">20</property>
-		<property name="hibernate.c3p0.timeout">300</property>
-		<property name="hibernate.c3p0.max_statements">50</property>
-		<property name="hibernate.c3p0.idle_test_period">3000</property>
+		<property name="hibernate.c3p0.min_size">5</property> <!-- Minimum number of JDBC connections in the pool. Hibernate default: 1 -->
+		<property name="hibernate.c3p0.max_size">20</property> <!-- Maximum number of JDBC connections in the pool. Hibernate default: 100 -->
+		<property name="hibernate.c3p0.timeout">300</property> <!-- When an idle connection is removed from the pool (in second). Hibernate default: 0, never expire. -->
+		<property name="hibernate.c3p0.max_statements">50</property> <!-- Number of prepared statements will be cached. Increase performance. Hibernate default: 0 , caching is disable. -->
+		<property name="hibernate.c3p0.idle_test_period">3000</property> <!-- Idle time in seconds before a connection is automatically validated. Hibernate default: 0 -->
 
 		<mapping class="br.edu.fa7.controle_passagem.model.CompanhiaAerea" />
 		<mapping class="br.edu.fa7.controle_passagem.model.Aviao" />
